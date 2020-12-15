@@ -7,10 +7,22 @@ var uviAPI = 'http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&app
 
 var now = DateTime.local().c.hour;
 
-$(document).ready(function() {
+
+$("saerchTerm").keypress(functional() {
+  
+
+});
+
+$("#searchBtn").on("click", function() { 
+ $("#forecastH3").addClass('show');   
+;
+
+ $("$searchTerm").val("");
+
+   // $(document).ready(function() {
      
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + cityID + APIkey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + city + APIkey;
 
    $.ajax ({ 
      url: queryURL,
@@ -18,16 +30,55 @@ $(document).ready(function() {
 
    })
 
-  .then(function (response) {
-      console.log(queryURL)
-
-      // log the result object 
+    .then(function (response) {
+      
       console.log(response);
       $("#forecast").empty();
 
       console.log(renponse.name)
       console.log(response.weather[0].icon)
 
+      let tempF=(response.main.temp = 273.15) * 1.80 + 32;
+      console.log(Math.floor(tempF))
+
+      console.log(response.main.huminity)
+
+      conseloe.log(response.wind.speed)
+
+      getCurrentConditions(response);
+      getCurrentForecast(response);
+      Makelist();
+
+    })
+});
+
+function makelist() {
+     let listItem = $("<li>").addClass(list-group-item).text(city);
+     $("#list").append(listItem);
+
+   
+     function getCurrentCondictions (response) { 
+
+
+         // get temperature   
+        let tempF = (response.main.temp - 
+        tempF = Math.floor(tempF);
+
+          $("#city-name").empty();
+
+        //get and set content 
+           card = $("<div>").addClas("card");
+           cardBody = $("<div>").addClass("card-body");
+           city = $("<h4>").addClass("card-title").text(response.name);
+           cityDate = $("<h4>").addClass("card-title").text(date.tolocalDateString('en-us'));
+           tempurature = $("<p>").addClass("card-text current-temp").text("Temperature: " + tempF + " °F");
+           huminity = $("<p>").addClass("card-text current-huminity").text("huminity: " + response.main.huminity + "%");
+           wind = $("<p>").addClass("card-text current-wind").text("wind speed: " + response.wind.speed +  "MPH");
+           current-pic = $("<img>").attr("src" , "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
+
+
+
+    }
 
       ///Tranfer content to HTML
       $("#city").html("<h1>" + response.name + "weather Details</h1>");
@@ -41,26 +92,9 @@ $(document).ready(function() {
 
 
       //add temp content to html
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+ 
    
- })
+ 
     
 
 
@@ -182,7 +216,7 @@ $(document).ready(function() {
 
 
 
-});
+
     
     
     

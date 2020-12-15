@@ -22,11 +22,11 @@
 <div class="container">
     <div class="row">
         <div class="col-4 bg-light">
-             <p class="search-header my-1">Search for City</p>
+             <p class="searchTerm-header my-1">Search for City</p>
                 <div class="input-group mb-3">
                    <input id="city-input" type="text" class="form-control" placeholder="Enter city name" aria-label="Enter city name">
                     <div class="input-group-append">
-                        <button id="btn-btn-primary" class="btn-btn-primary" type="button"id="search button">
+                        <button id="btn-btn-primary" class="btn-btn-primary" type="button"id="searchButton">
                           <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -34,7 +34,7 @@
                 <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
                 <form id="history"></form>
             </div>
-            <div class="col-8">
+            <div class="card col-8">
                 <div class="row-mr-0">
                     <div class="col-12 border-dark m-3 rounded">
                         <div class="row"> 
@@ -45,6 +45,7 @@
                         </div>
                     <div class="row">
                         <div class="col-12">
+                            <ul class=list-group></ul>
                            <p id="huminity"></p>
                         </div>
                     </div>
