@@ -7,21 +7,42 @@ var uviAPI = 'http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&app
 
 var now = DateTime.local().c.hour;
 
+function search() {
 
-$("saerchTerm").keypress(functional() {
+   $("#searchBtn").on("click" , function() {
+
+      citySearch = $("#")
+
+
+
+
+
+   });
+
+
+
+}
+
+
+
+
+
+// $("seachTerm").keypress(functional() {
   
 
-});
+// });
 
 $("#searchBtn").on("click", function() { 
  $("#forecastH3").addClass('show');   
-;
 
- $("$searchTerm").val("");
+   //value of the input of user
+   city = $("#searchTerm").val();
 
-   // $(document).ready(function() {
-     
+    //to clear input 
+   $("$searchTerm").val("");
 
+         // $(document).ready(function() {
+          
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + city + APIkey;
 
    $.ajax ({ 
@@ -52,16 +73,16 @@ $("#searchBtn").on("click", function() {
     })
 });
 
-function makelist() {
+    function makelist() { 
      let listItem = $("<li>").addClass(list-group-item).text(city);
      $("#list").append(listItem);
-
+    }
    
      function getCurrentCondictions (response) { 
 
 
          // get temperature   
-        let tempF = (response.main.temp - 
+        let tempF = (response.main.temp - 273.15) * 1.80 + 32;
         tempF = Math.floor(tempF);
 
           $("#city-name").empty();
@@ -78,7 +99,14 @@ function makelist() {
 
 
 
-    }
+           // insert to page 
+           city.append(cityDate, image)
+           cardBody.append(city, temperature, huminity, wind);
+           card.append(cardBody);
+           $("#currentcity").append(card);
+
+          }
+   
 
       ///Tranfer content to HTML
       $("#city").html("<h1>" + response.name + "weather Details</h1>");

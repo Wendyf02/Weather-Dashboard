@@ -22,12 +22,12 @@
 <div class="container">
     <div class="row">
         <div class="col-4 bg-light">
-             <p class="searchTerm-header my-1">Search for City</p>
+             <p class="city search-header my-1">Search for City</p>
                 <div class="input-group mb-3">
-                   <input id="city-input" type="text" class="form-control" placeholder="Enter city name" aria-label="Enter city name">
+                   <input id="searchTerm" type="text" class="form-control" placeholder="City name" class="Enter city name">
                     <div class="input-group-append">
-                        <button id="btn-btn-primary" class="btn-btn-primary" type="button"id="searchButton">
-                          <i class="fas fa-search"></i>
+                        <button id="searchButton" class="btn-btn-primary" type="button" type="text">
+                          <i class="fas fa-search" style= "font-size:24px"></i>
                         </button>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     <div class="col-12 border-dark m-3 rounded">
                         <div class="row"> 
                             <div class="col-12">
-                              <span id="city-name" class="city-name align-middle"></span>
+                              <span id="currentcity" class="city-name align-middle"></span>
                               <img id="current-pic" src="placeholder" alt="" >
                             </div>
                         </div>
@@ -68,7 +68,7 @@
             </div>
             <div class="row"></div>
                 <div class="col forecast bg-primary text-white ml-3 rounded"></div>
-                 <div class="col forecast bg-primary text-white ml-3 rounded"></div>
+                <div class="col forecast bg-primary text-white ml-3 rounded"></div>
                 <div class="col forecast bg-primary text-white ml-3 rounded"></div>
                 <div class="col forecast bg-primary text-white ml-3 rounded"></div>
                 <div class="col forecast bg-primary text-white ml-3 rounded"></div>
