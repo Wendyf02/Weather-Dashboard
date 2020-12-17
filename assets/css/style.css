@@ -32,7 +32,7 @@ body {
     font-size: 14px;
     border: 1px solid grey;
     float: left;
-    width: 80%;
+    width: 40%;
     background: #f1f1f1;
 }
   
@@ -52,7 +52,7 @@ body {
     background: #0b7dda;
 }
 
-.fa.fa-search::after {
+.fa.fa-search::before {
     content: "";
     clear: both;
     display: table;
