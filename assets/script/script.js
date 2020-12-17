@@ -53,6 +53,7 @@ $(document).ready(function () {
       })
   });
 
+
   function Makelist() {
     let listItem = $("<li>").addClass("list-group-item").text(city);
     $("#list").append(listItem);
@@ -103,12 +104,12 @@ $(document).ready(function () {
 
 
 
-//get UV 
-var uvURL = 'https://api.openweathermap.org/data/2.5/uvi?appid=14d2382c0b1c2cee7fb864ef665df929&lat=' + response.coord.lat + '&lon='  + response.coord.lon;
-$.ajax({ 
-  url: uvURL,
+   //get UV 
+  var uvURL 
+   $.ajax({ 
+  url: queryURLUv,
   method: "GET"
-}).then(function (uvresponse) { 
+ }).then(function (uvresponse) { 
   var uvindex = uvresponse.value;
   var bgcolor;
   if (uvindex <= 3) {
@@ -128,11 +129,11 @@ $.ajax({
   cardBody.append(uvdisp);
 
 
-});
+ });
 
 
 getFiveDayForecast();
-  function getFiveDayForecast() {
+  function getFiveDayForecast(city) {
       cardrow.empty();
       var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIkey;
       $.ajax({  
@@ -142,7 +143,7 @@ getFiveDayForecast();
        })
       .then(function(fiveDayResponse) {  
         for (let i = 0; i != fiveDayResponse.list.length; i+=8 ) {
-            let cityObj = {
+            let city = {
                 date: fiveDayResponse.list[i].dt_txt,
                 icon: fiveDayResponse.list[i].weather[0].icon,
                 temp: fiveDayResponse.list[i].main.temp,
@@ -150,7 +151,7 @@ getFiveDayForecast();
             let dateStr = cityobj.date;
             let trimmedDate = dateStr.substring(0, 10);
             let weatherIco = 'https://openweathermap.org/img/w/+ cityObj.icon + png'
-            createForecastCard(trimmedDate, weatherIco , cityObj.temp, cityObj.huminity)
+            createForecastCard(trimmedDate, weatherIco , city.temp, city.huminity)
         }
     
       })
@@ -160,25 +161,20 @@ getFiveDayForecast();
 
 
 
+   function getCurrentLocation(position) {  
+   var lon = position.coords.longitude;
+   var lat = position.coords.latitude;
+   var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=14d2382c0b1c2cee7fb864ef665df929"; 
+   $.ajax({ 
+        url: queryURL, 
+        method: "GET"
+   }).then(function (response) {
+     currentLoc = response.name;
+     saveLoc(esponse.name);
+     getCurrent(currentLoc);
+   });
 
-//   function getCurrentLocation(position) {  
-//   var lon = position.coords.longitude;
-//   var lat = position.coords.latitude;
-//   var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=14d2382c0b1c2cee7fb864ef665df929"; 
-//   $.ajax({ 
-//        url: queryURL, 
-//        method: "GET"
-//   }).then(function (response) {
-//     currentLoc = response.name;
-//     saveLoc(esponse.name);
-//     getCurrent(currentLoc);
-//   });
-
-//  } 
-
-
-
-
+   } 
 
 
 
