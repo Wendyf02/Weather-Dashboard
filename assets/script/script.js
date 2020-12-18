@@ -6,7 +6,7 @@ $(document).ready(function() {
   var forecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=';
   var citySearch;
   var CurrentForecast;
-  var currentLoc;
+  var searchHistory;
   
 
 
@@ -21,6 +21,26 @@ $(document).ready(function() {
     //to clear input 
     $("searchTerm").val("");
 
+
+  $(document).on("click" , "historyEntry", function(){   
+       console.log("clicked histoty item")
+       let thisElement = $(this);
+       getWeather(thisElement.text());
+  })
+
+  function SearchHistory(city) {
+    console.log(searchHistory)
+      searchHistoryEl.empty();
+      let searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
+      for (let i = 0; i < searchHistoryArr.length; i++) {
+         //loop new ListItem 
+        let newListItem = $("<li>").attr("class" , "historyEntry");
+        newListItem.text(searchHistoryArr[i]);
+        searchHistoryEl.prepend(newListItem);
+
+
+      }
+  }
 
   
 
@@ -171,6 +191,17 @@ function createForecastCard(trimmedDate, weatherIco , city,  dateStr) {
   $(".card-row").append(card)
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
