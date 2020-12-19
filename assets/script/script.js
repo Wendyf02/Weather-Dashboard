@@ -1,26 +1,46 @@
 $(document).ready(function() {  
 
 
-  var APIkey = '14d2382c0b1c2cee7fb864ef665df929';
-  var weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?';
-  var forecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=';
-  var citySearch;
-  var CurrentForecast;
-  var searchHistory;
-  
+   var APIkey = '14d2382c0b1c2cee7fb864ef665df929';
+   var weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?';
+   var forecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+   var citySearch;
+   var CurrentForecast;
+   var searchHistory;
+   var history
 
-
+  // search Btn is clicked 
   $("#searchButton").on("click", function () {
     $("#currentcity").empty();
     $("#forecastH3").addClass('show');
     
-  
     //value of the input of user
     city = $("#searchTerm").val();
     // getCurrentForecast(city);
     getFiveDayForecast(city);
     //to clear input 
     $("searchTerm").val("");
+
+     
+    //* History search//
+    $("#history").on("click" ,  "li"  , function() {  
+         searchweather($(this).text());
+         console.log("History (this):"  , this)
+       
+    });
+    
+    // search history lsit//
+    function makeRow(text) {
+       console.log("--|| Start makeRow function || --");
+       var li = $("<li>")
+       //add class & name
+       .addClass("list-group-item list-group-item-action")
+       // add text
+       .text(text)
+       //append
+       $("#history").append(li)
+       
+    }
 
 
 
@@ -158,7 +178,7 @@ $(document).ready(function() {
       }
      
     
-function createForecastCard(trimmedDate, weatherIco , city,  dateStr) {
+ function createForecastCard(trimmedDate, weatherIco , city,  dateStr) {
   console.log(trimmedDate, weatherIco , city,  dateStr)
 
  
@@ -171,25 +191,37 @@ function createForecastCard(trimmedDate, weatherIco , city,  dateStr) {
   card.addClass("col")
   card.append(date ,currentPic , temperature )
   $(".card-row").append(card)
-  
+
+ }
+
+  // localStorage.setItem("lastSearched", $("#searchBar").val())
+
+//get history
+ var history =JSON.parse(window.localStorage.getItem("history")) || [] ;
+ console.log("-- || localStorage History Array || --");
+ console.log("current History:" , history);
+ console.log("History's Length:" , history.length);
+
+ if (history.length > 0)  {  
+        searchWeather(history[history.length -1]);
+ }
+ console.log("History's Length:" , history.length, "if > 0 searchweather");
 
 
-}
+ for (var i = 0; i < history.length; i++) {
+     makeRow(history[i]);
+ }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ console.log(
+   "history's Length:", "for" , i, "=0", i, "<", history.length, "makeRow");
 
 
 
 });
+
+$("#clear-button").on(click, function() { 
+  console.clear.();
+  localStorage.clear();
+  windoww.location.reload();
+
+}) 
