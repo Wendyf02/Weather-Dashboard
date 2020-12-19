@@ -196,34 +196,34 @@ $(document).ready(function() {
 
   // localStorage.setItem("lastSearched", $("#searchBar").val())
 
-//get history
- var history =JSON.parse(window.localStorage.getItem("history")) || [] ;
- console.log("-- || localStorage History Array || --");
- console.log("current History:" , history);
- console.log("History's Length:" , history.length);
+// //get history
+//  var history =JSON.parse(window.localStorage.getItem("history")) || [] ;
+//  console.log("-- || localStorage History Array || --");
+//  console.log("current History:" , history);
+//  console.log("History's Length:" , history.length);
 
- if (history.length > 0)  {  
-        searchWeather(history[history.length -1]);
- }
- console.log("History's Length:" , history.length, "if > 0 searchweather");
-
-
- for (var i = 0; i < history.length; i++) {
-     makeRow(history[i]);
- }
-
- console.log(
-   "history's Length:", "for" , i, "=0", i, "<", history.length, "makeRow");
+//  if (history.length > 0)  {  
+//         searchWeather(history[history.length -1]);
+//  }
+//  console.log("History's Length:" , history.length, "if > 0 searchweather");
 
 
+//  for (var i = 0; i < history.length; i++) {
+//      makeRow(history[i]);
+//  }
+
+//  console.log(
+//    "history's Length:", "for" , i, "=0", i, "<", history.length, "makeRow");
 
 
-   $("#clear-history").on("click", function() { 
-    console.clear();
-    localStorage.clear();
-    windoww.location.reload();
+
+
+//    $("#clear-history").on("click", function() { 
+//     console.clear();
+//     localStorage.clear();
+//     windoww.location.reload();
   
-  }) 
+//   }) 
 
 
 

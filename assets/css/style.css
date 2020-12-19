@@ -25,7 +25,13 @@ body {
     font-size: 18px;
 }
 
-.card-row
+.col {
+    flex: 1 0 0;
+    background-color: rgb(125, 188, 247);
+    margin:5px;
+    color: #212427;
+    border-radius: 20px;
+}
   
 #searchTerm {
     padding: 10px;
