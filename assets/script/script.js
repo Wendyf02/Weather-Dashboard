@@ -217,11 +217,18 @@ $(document).ready(function() {
 
 
 
+
+   $("#clear-history").on("click", function() { 
+    console.clear();
+    localStorage.clear();
+    windoww.location.reload();
+  
+  }) 
+
+
+
+
+
+
 });
 
-$("#clear-button").on(click, function() { 
-  console.clear.();
-  localStorage.clear();
-  windoww.location.reload();
-
-}) 
