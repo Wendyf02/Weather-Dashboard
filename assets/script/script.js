@@ -13,7 +13,8 @@ $(document).ready(function() {
   $("#searchButton").on("click", function () {
     $("#currentcity").empty();
     $("#forecastH3").addClass('show');
-
+    
+  
     //value of the input of user
     city = $("#searchTerm").val();
     // getCurrentForecast(city);
@@ -22,27 +23,6 @@ $(document).ready(function() {
     $("searchTerm").val("");
 
 
-  $(document).on("click" , "historyEntry", function(){   
-       console.log("clicked histoty item")
-       let thisElement = $(this);
-       getWeather(thisElement.text());
-  })
-
-  function SearchHistory(city) {
-    console.log(searchHistory)
-      searchHistoryEl.empty();
-      let searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
-      for (let i = 0; i < searchHistoryArr.length; i++) {
-         //loop new ListItem 
-        let newListItem = $("<li>").attr("class" , "historyEntry");
-        newListItem.text(searchHistoryArr[i]);
-        searchHistoryEl.prepend(newListItem);
-
-
-      }
-  }
-
-  
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey;
 
@@ -186,9 +166,13 @@ function createForecastCard(trimmedDate, weatherIco , city,  dateStr) {
   var temperature = $("<p>").addClass("card-text current-temp").text("Temperature: " + city.temp + " °F");
   var date = $("<p>").addClass("card-text current-temp").text(trimmedDate);
   var currentPic = $("<img>").attr("src", "https://openweathermap.org/img/w/" + city.icon + ".png")
+  
 
-  card.append(date ,currentPic , temperature)
+  card.addClass("col")
+  card.append(date ,currentPic , temperature )
   $(".card-row").append(card)
+  
+
 
 }
 
