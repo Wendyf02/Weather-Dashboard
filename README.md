@@ -6,7 +6,7 @@ This project is a weather dashboard app with search functionality to find curren
 
 
 ***
-THIS FINAL HOMEWORK completly broke me &  swolle me up..., I could not crack the code. sorry but my brain is fry at this point have vertigo going in circles..Storage not working day date are coming for weeks.I'm just frustrated and codes are not flowing or looking nice is a mess ,I just feel I did not set myself up correctly from the begininng and got all over the place..Don't understand  I did  a storage & time and hour on my last homework and they work , but for this one all is out the window .The tempurature on main city work but not at five days ..I did manage to get search for city show up with correct tempurature/humidity/wind speed/uv ...
+THIS FINAL HOMEWORK completly broke me &  swolle me up..., I could not crack the code. sorry but my brain is fry at this point have vertigo going in circles..Storage not working tempurature in five days is coming wrong .I'm just frustrated and codes are not flowing or looking nice is a mess ,I just feel I did not set myself up correctly from the beginning and it got all over the place..Don't understand  I did  a storage & time and hour on my last homework and they work , but for this one all is out the window .The tempurature on main city work but not at five days ..I did manage to get search for city show up with correct tempurature/humidity/wind speed/uv ...
 Will Re-Do or try to orgainze and fix whats not working and review with my TA **
 
 
