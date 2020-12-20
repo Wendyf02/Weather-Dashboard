@@ -92,8 +92,8 @@ $(document).ready(function() {
     //get and set content 
     var card = $("<div>").addClass("card");
     var cardBody = $("<div>").addClass("card-body");
-    var city = $("<h4>").addClass("card-title").text(response.name);
-    // var date = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
+    var city = $("<h2>").addClass("card-title").text(response.name);
+    var date = $("<h5>").addClass("card-title").text( response.Date);
     var temperature = $("<p>").addClass("card-text current-temp").text("Temperature: " + tempF + " °F");
     var huminity = $("<p>").addClass("card-text current-huminity").text("humidity: " + response.main.humidity + "%");
     var wind = $("<p>").addClass("card-text current-wind").text("wind speed: " + response.wind.speed + "MPH");
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
     // insert to page 
     city.append(currentPic)
-    cardBody.append(city, temperature, huminity, wind);
+    cardBody.append(date , city, temperature, huminity, wind);
     card.append(cardBody);
     $("#currentcity").append(card);
 
@@ -143,7 +143,7 @@ $(document).ready(function() {
         else {
             bgcolor = "red";
         }
-          var uvdisp = $("<p>").attr("class", "card-text").text("UV Index:");
+          var uvdisp = $("<p>").attr("class", "card-text").text("UV-Index:");
           uvdisp.append($("<span>").attr("class" , "uvindex").attr("style" , ("background-color:" + bgcolor)).text(uvindex));
           $(".card-body").append(uvdisp);
           $("#uv-index").text("uvindex" + uvindex)
@@ -166,6 +166,7 @@ $(document).ready(function() {
                 date: fiveDayResponse.list[i].dt_txt,
                 icon: fiveDayResponse.list[i].weather[0].icon,
                 temp: fiveDayResponse.list[i].main.temp,
+              
               }
                 let dateStr = city.date;
                 let trimmedDate = dateStr.substring(0, 10);
@@ -176,10 +177,10 @@ $(document).ready(function() {
           })
 
       }
-     
+      
     
- function createForecastCard(trimmedDate, weatherIco , city,  dateStr) {
-  console.log(trimmedDate, weatherIco , city,  dateStr)
+ function createForecastCard(trimmedDate, weatherIco , city) {
+  console.log(trimmedDate, weatherIco , city)
 
  
   var card = $("<div>");
@@ -196,34 +197,34 @@ $(document).ready(function() {
 
   // localStorage.setItem("lastSearched", $("#searchBar").val())
 
-// //get history
-//  var history =JSON.parse(window.localStorage.getItem("history")) || [] ;
-//  console.log("-- || localStorage History Array || --");
-//  console.log("current History:" , history);
-//  console.log("History's Length:" , history.length);
+//get history
+ var history =JSON.parse(window.localStorage.getItem("history")) || [] ;
+ console.log("-- || localStorage History Array || --");
+ console.log("current History:" , history);
+ console.log("History's Length:" , history.length);
 
-//  if (history.length > 0)  {  
-//         searchWeather(history[history.length -1]);
-//  }
-//  console.log("History's Length:" , history.length, "if > 0 searchweather");
-
-
-//  for (var i = 0; i < history.length; i++) {
-//      makeRow(history[i]);
-//  }
-
-//  console.log(
-//    "history's Length:", "for" , i, "=0", i, "<", history.length, "makeRow");
+ if (history.length > 0)  {  
+        searchWeather(history[history.length -1]);
+ }
+ console.log("History's Length:" , history.length, "if > 0 searchweather");
 
 
+ for (var i = 0; i < history.length; i++) {
+     makeRow(history[i]);
+ }
+
+ console.log(
+   "history's Length:", "for" , i, "=0", i, "<", history.length, "makeRow");
 
 
-//    $("#clear-history").on("click", function() { 
-//     console.clear();
-//     localStorage.clear();
-//     windoww.location.reload();
+
+
+  //  $("#clear-history").on("click, function() { 
+  //   console.logclear();
+  //   localStorage.clear();
+  //   windoww.location.reload();
   
-//   }) 
+  // }) 
 
 
 

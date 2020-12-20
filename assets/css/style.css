@@ -30,22 +30,27 @@ body {
     background-color: rgb(125, 188, 247);
     margin:5px;
     color: #212427;
-    border-radius: 20px;
+    border-radius: 30px;
 }
+
+.badge-danger {
+    padding: 3px 4.8px;
+}
+    
   
 #searchTerm {
-    padding: 10px;
+    padding: 6px 12px;
     font-size: 14px;
     border: 1px solid grey;
     float: left;
-    width: 40%;
+    width: 20px;
     background: #f1f1f1;
 }
   
 #searchButton {
     float: left;
-    width: 15%;
-    padding: 10px;
+    /* width: 10px; */
+    padding: 6px 12px;
     background: #2196F3;
     color: white;
     font-size: 17px;
@@ -55,7 +60,7 @@ body {
 }
   
 #searchButton :hover {
-    background: #0b7dda;
+    background: #1681d8;
 }
 
 .fa.fa-search::before {
